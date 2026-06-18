@@ -9,7 +9,17 @@
 
 <body>
 
-<h1>Student Management System</h1>
+<h1 th:text="#{app.title}"></h1>
+
+
+<hr>
+
+
+<div>
+    <a href="?lang=en">English</a> | <a href="?lang=ka">ქართული</a>
+</div>
+
+
 
 <!-- წარმატების მესიჯი -->
 <p th:text="${success}"></p>
@@ -18,7 +28,7 @@
 <form th:action="@{/save}" th:object="${student}" method="post">
 
     <!-- name -->
-    <input type="text" th:field="*{name}" placeholder="Name">
+    <input type="text" th:field="*{name}" th:placeholder="#{placeholder.name}">
 
     <!-- validation error -->
     <span th:errors="*{name}"></span>
@@ -33,7 +43,7 @@
 
     <br><br>
 
-    <button type="submit">Save</button>
+    <button type="submit" th:text="#{btn.save}"></button>
 
 </form>
 
@@ -44,13 +54,13 @@
 
     <input type="file" name="file">
 
-    <button type="submit">Upload</button>
+    <button type="submit" th:text="#{btn.upload}"></button>
 
 </form>
 
 <hr>
 
-<h2>Students</h2>
+<h2 th:text="#{list.title}"></h2>
 
 <ul>
 
@@ -59,7 +69,7 @@
 
         <span th:text="${s.name}"></span>
 
-        <a th:href="@{'/delete/' + ${s.id}}">Delete</a>
+        <a th:href="@{'/delete/' + ${s.id}}" th:text="#{btn.delete}"></a>
 
     </li>
 

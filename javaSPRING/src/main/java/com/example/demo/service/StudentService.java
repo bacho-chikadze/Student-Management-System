@@ -5,6 +5,8 @@ import com.example.demo.entity.Student;
 import com.example.demo.repository.StudentRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,7 +21,7 @@ import java.util.List;
 public class StudentService {
 
     private final StudentRepository repository;
-
+    @CacheEvict(value = "students", allEntries = true)
     // სტუდენტის შენახვა
     public Student save(Student student){
 
@@ -30,11 +32,15 @@ public class StudentService {
     }
 
     // ყველა სტუდენტის წამოღება
+    @Cacheable(value = "students")
     public List<Student> findAll(){
+        log.info("Fetching from database...");
         return repository.findAll();
     }
 
+
     // წაშლა
+    @CacheEvict(value = "students",allEntries = true)
     public void delete(Long id){
 
         // warn level log
