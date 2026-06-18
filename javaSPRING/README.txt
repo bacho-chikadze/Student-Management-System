@@ -18,3 +18,13 @@ Student Management System - კომენტარებით
 - Logging
 - Profiles
 - Static files
+- unit tests
+- BCryptPasswordEncoder
+- LocaleChangeInterceptor
+- #{...}syntax
+- @Cacheable
+- CachEvict
+- /health accessible
+- @Scheduled
+- @EnableScheduling
+- Dockerfile
